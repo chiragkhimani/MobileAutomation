@@ -1,6 +1,5 @@
 package com.automation.utils;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Properties;
 
@@ -16,7 +15,6 @@ public class ConfigReader {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
     }
 
     public static String getProperty(String key) {

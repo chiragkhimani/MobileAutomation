@@ -9,13 +9,13 @@ public class DriverUtils {
 
     static AppiumDriver driver;
 
-    // Method to create driver, and it will get called from Hooks
+    // Method to create driver, and it will get called from Hooks @Before
     public static void createDriver() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("appium:automationName", "UiAutomator2");
-        capabilities.setCapability("deviceName", "RZ8N9250P5Z");
-        capabilities.setCapability("appium:app", "C:\\Users\\khima\\Documents\\Automation Code\\MobileAutomationFramework\\expedia.apk");
+        capabilities.setCapability("platformName", ConfigReader.getProperty("platform.name"));
+        capabilities.setCapability("appium:automationName", ConfigReader.getProperty("automation.name"));
+        capabilities.setCapability("deviceName", ConfigReader.getProperty("device.name"));
+        capabilities.setCapability("appium:app", System.getProperty("user.dir") + "\\"+ConfigReader.getProperty("apk.name"));
 
         driver = new AppiumDriver(capabilities);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
@@ -26,9 +26,10 @@ public class DriverUtils {
         return driver;
     }
 
+    // This is created for testing purpose, we can create at any class to test our methods just like unit testing.
     public static void main(String[] args) {
-        ConfigReader.loadProperties();
-        System.out.println(ConfigReader.getProperty("platform.name"));
+        System.out.println(System.getProperty("os.name"));
+        System.out.println(System.getProperty("user.dir"));
     }
 
 }
