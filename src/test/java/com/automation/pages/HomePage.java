@@ -1,33 +1,41 @@
 package com.automation.pages;
 
-import com.automation.utils.DriverUtils;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class HomePage {
+public class HomePage extends BasePage{
 
-    public HomePage(){
-        PageFactory.initElements(DriverUtils.getDriver(), this);
-    }
-
-    @FindBy(id="com.expedia.bookings:id/consentButton")
+    @FindBy(id = "com.expedia.bookings:id/consentButton")
     WebElement acceptBtn;
 
-    @FindBy(xpath="//android.widget.TextView[@text='Get started']")
+    @FindBy(xpath = "//android.widget.TextView[@text='Get started']")
     WebElement getStartedBtn;
 
-    @FindBy(xpath="//android.view.View[@content-desc='Close']")
+    @FindBy(xpath = "//android.view.View[@content-desc='Close']")
     WebElement closeBtn;
 
-    @FindBy(xpath="//android.widget.TextView[@text='Let’s go']")
+    @FindBy(xpath = "//android.widget.TextView[@text='Let’s go']")
     WebElement letsGoBtn;
+
+    @FindBy(xpath = "//android.widget.TextView[@text='Stays']")
+    WebElement staysTab;
+
+    @FindBy(xpath = "//android.widget.TextView[@text='Flights']")
+    WebElement flightTab;
 
     public void openApplication() {
         // Below buttons is not always available, how can we handle these button to make sure we click on it if it is appeared
-        acceptBtn.click();
-        getStartedBtn.click();
-        closeBtn.click();
-        letsGoBtn.click();
+        click(acceptBtn);
+        click(getStartedBtn);
+        click(closeBtn);
+        click(letsGoBtn);
+    }
+
+    public boolean isHomePageDisplayed() {
+        return staysTab.isDisplayed() && flightTab.isDisplayed();
+    }
+
+    public void clickOnFlightTab() {
+        flightTab.click();
     }
 }
