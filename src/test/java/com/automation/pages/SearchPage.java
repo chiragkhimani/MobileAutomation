@@ -6,18 +6,18 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class SearchPage extends BasePage{
+public class SearchPage extends BasePage {
 
     @FindBy(xpath = "//android.widget.TextView[@text='Select dates']")
     WebElement dateField;
 
-    @FindBy(id="com.expedia.bookings:id/search_btn")
+    @FindBy(id = "com.expedia.bookings:id/search_btn")
     WebElement searchBtn;
 
-    @FindBy(id="com.expedia.bookings:id/search_src_text")
+    @FindBy(id = "com.expedia.bookings:id/search_src_text")
     WebElement searchBox;
 
-    @FindBy(id="com.expedia.bookings:id/confirmButton")
+    @FindBy(id = "com.expedia.bookings:id/confirmButton")
     WebElement doneBtn;
 
     @FindBy(xpath = "//android.widget.LinearLayout[@resource-id='com.expedia.bookings:id/suggestion_text_container']")
@@ -30,9 +30,9 @@ public class SearchPage extends BasePage{
         searchResultList.get(0).click();
     }
 
-    public void enterDate(String date){
+    public void enterDate(String date) {
         String dateLoc = String.format(XPATH_DATE_ELEMENT, date);
-        driver.findElement(By.xpath(dateLoc)).click();
+        driver.findElement(new By.ByXPath(dateLoc)).click();
     }
 
     public void clickOnDoneBtn() {
