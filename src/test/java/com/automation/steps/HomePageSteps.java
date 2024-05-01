@@ -24,4 +24,8 @@ public class HomePageSteps {
         homePage.clickOnFlightTab();
     }
 
+    @When("user click on Stays menu")
+    public void userClickOnStaysMenu() {
+        homePage.clickOnStayMenu();
+    }
 }

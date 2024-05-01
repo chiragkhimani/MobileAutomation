@@ -23,4 +23,5 @@ Feature: Flight Search
     And click on done button
     And click on search button
     Then verify invalid search error is displayed with text
-    | Please make sure your departure and arrival cities are in different places |
+      | Please make sure your departure and arrival cities are in different places. |
+    And click on done button on invalid search error popup
