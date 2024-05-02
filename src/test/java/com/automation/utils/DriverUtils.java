@@ -28,22 +28,20 @@ public class DriverUtils {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         HashMap<String, Object> browserstackOptions = new HashMap<String, Object>();
-        browserstackOptions.put("projectName", "ExpediaAutomation");
-        browserstackOptions.put("userName", "chiragthakker2");
-        browserstackOptions.put("accessKey", "oe2Xa5anZYUbLG9Yp4xo");
-        browserstackOptions.put("buildName", "RegressionTest");
+        browserstackOptions.put("projectName", ConfigReader.getProperty("project.name"));
+        browserstackOptions.put("userName", ConfigReader.getProperty("bs.username"));
+        browserstackOptions.put("accessKey", ConfigReader.getProperty("bs.access.key"));
+        browserstackOptions.put("buildName", ConfigReader.getProperty("build.name"));
 
         capabilities.setCapability("bstack:options", browserstackOptions);
-        capabilities.setCapability("platformName", "android");
-        capabilities.setCapability("platformVersion", "9.0");
-        capabilities.setCapability("deviceName", "Google Pixel 3");
-        capabilities.setCapability("app", "bs://ff2ca42ce31c6be97f9c00710510ded752be21cc");
+        capabilities.setCapability("platformName", ConfigReader.getProperty("platform.name"));
+        capabilities.setCapability("platformVersion", ConfigReader.getProperty("platform.version"));
+        capabilities.setCapability("deviceName", ConfigReader.getProperty("bs.device.name"));
+        capabilities.setCapability("app", ConfigReader.getProperty("bs.app.url"));
 
-
-        URL url = new URL("http://hub-cloud.browserstack.com/wd/hub");
+        URL url = new URL(ConfigReader.getProperty("bs.url"));
         driver = new AppiumDriver(url, capabilities);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
-
     }
 
     // Anywhere we need driver, we will call this method

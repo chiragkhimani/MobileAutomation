@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
-public class BasePage {
+public abstract class BasePage {
 
     public AppiumDriver driver;
 
